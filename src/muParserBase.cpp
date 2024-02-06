@@ -322,7 +322,7 @@ namespace mu
 			ss << _T("; RELEASE");
 #endif
 
-#ifdef _UNICODE
+#ifdef _UNICODE_SUPPORT
 			ss << _T("; UNICODE");
 #else
 #ifdef _MBCS

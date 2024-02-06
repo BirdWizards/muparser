@@ -43,7 +43,7 @@
 #include "muParserInt.h"
 #include "muParserError.h"
 
-#if _UNICODE
+#if _UNICODE_SUPPORT
 	#include <wchar.h>
 #endif
 
@@ -207,7 +207,7 @@ API_EXPORT(const muChar_t*) mupGetVersion(muParserHandle_t a_hParser)
 	MU_TRY
 		muParser_t* const p(AsParser(a_hParser));
 
-#ifndef _UNICODE
+#ifndef _UNICODE_SUPPORT
 		snprintf(s_tmpOutBuf, count_of(s_tmpOutBuf), "%s", p->GetVersion().c_str());
 #else
 		swprintf(s_tmpOutBuf, count_of(s_tmpOutBuf), _T("%s"), p->GetVersion().c_str());
@@ -874,7 +874,7 @@ API_EXPORT(const muChar_t*) mupGetExpr(muParserHandle_t a_hParser)
 
 		// C# explodes when pMsg is returned directly. For some reason it can't access
 		// the memory where the message lies directly.
-#ifndef _UNICODE
+#ifndef _UNICODE_SUPPORT
 		snprintf(s_tmpOutBuf, count_of(s_tmpOutBuf), "%s", p->GetExpr().c_str());
 #else
 		swprintf(s_tmpOutBuf, count_of(s_tmpOutBuf), _T("%s"), p->GetExpr().c_str());
@@ -980,7 +980,7 @@ API_EXPORT(void) mupGetVar(muParserHandle_t a_hParser, unsigned a_iVar, const mu
 		for (unsigned i = 0; i < a_iVar; ++i)
 			++item;
 
-#ifndef _UNICODE
+#ifndef _UNICODE_SUPPORT
 		strncpy(szName, item->first.c_str(), count_of(szName));
 #else
 		wcsncpy(szName, item->first.c_str(), count_of(szName));
@@ -1053,7 +1053,7 @@ API_EXPORT(void) mupGetExprVar(muParserHandle_t a_hParser, unsigned a_iVar, cons
 		for (unsigned i = 0; i < a_iVar; ++i)
 			++item;
 
-#ifndef _UNICODE
+#ifndef _UNICODE_SUPPORT
 		strncpy(szName, item->first.c_str(), count_of(szName));
 #else
 		wcsncpy(szName, item->first.c_str(), count_of(szName));
@@ -1148,7 +1148,7 @@ API_EXPORT(void) mupGetConst(muParserHandle_t a_hParser, unsigned a_iVar, const 
 		for (unsigned i = 0; i < a_iVar; ++i)
 			++item;
 
-#ifndef _UNICODE
+#ifndef _UNICODE_SUPPORT
 		strncpy(szName, item->first.c_str(), count_of(szName));
 #else
 		wcsncpy(szName, item->first.c_str(), count_of(szName));
@@ -1211,7 +1211,7 @@ API_EXPORT(const muChar_t*) mupGetErrorMsg(muParserHandle_t a_hParser)
 
 	// C# explodes when pMsg is returned directly. For some reason it can't access
 	// the memory where the message lies directly.
-#ifndef _UNICODE
+#ifndef _UNICODE_SUPPORT
 	snprintf(s_tmpOutBuf, count_of(s_tmpOutBuf), "%s", pMsg);
 #else
 	swprintf(s_tmpOutBuf, count_of(s_tmpOutBuf), _T("%s"), pMsg);
@@ -1229,7 +1229,7 @@ API_EXPORT(const muChar_t*) mupGetErrorToken(muParserHandle_t a_hParser)
 
 	// C# explodes when pMsg is returned directly. For some reason it can't access
 	// the memory where the message lies directly.
-#ifndef _UNICODE
+#ifndef _UNICODE_SUPPORT
 	snprintf(s_tmpOutBuf, count_of(s_tmpOutBuf), "%s", pToken);
 #else
 	swprintf(s_tmpOutBuf, count_of(s_tmpOutBuf), _T("%s"), pToken);

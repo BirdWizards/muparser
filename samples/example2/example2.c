@@ -40,7 +40,7 @@
 #define PARSER_CONST_E   2.718281828459045235360287
 #define PARSER_MAXVARS		10
 
-#ifndef _UNICODE
+#ifndef _UNICODE_SUPPORT
 	#define _T(x) x
 	#define myprintf printf
 	#define mystrlen strlen
